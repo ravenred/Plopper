@@ -1,4 +1,5 @@
 import datetime
+import re
 
 
 def read_file(file_name):
@@ -8,13 +9,29 @@ def read_file(file_name):
 
     for i in start_line[0:]:        # Loops through the file but starts at line 1 to gather data
 
-        print(i)
-        # i.split(" ")
+        x = re.search(r'^((?:[0-9]{2}[-\/:.]){5}[0-9]{6})(.*[{]TCP[}]\s*|.*[{]UDP[}]\s*|.*[{]ICMP[}]\s*).(.*)', i)
 
-        # All the fields from the http.log are mapped to a variable in this tuple
-        timestamp, sig_generator, sig_id, sig_rev, msg, proto, src, srcport, dst, dstport, snort_id, \
-        classification, priority = \
-            tuple(map(str, i.split(" ")))       # SNORT logs are spaced using tabs to separate each field
+        # print(x.groups())
+        date_time = x.group(1)
+        event = x.group(2).lstrip()
+        ip_info = x.group(3)
+
+        try:
+            ip_formatted = re.search(r'\s*(((?:[0-9]{1,3}[.]){1,3}[0-9]{1,3}):([0-9]{1,6}))\s*->\s*(((?:[0-9]{1,3}[.]){1,3}[0-9]{1,3}):([0-9]{1,6}))', ip_info)
+            print(ip_formatted.groups())
+
+
+        except AttributeError:
+
+            try:
+                icmp_formatted = re.search(r'((?:[0-9]{1, 3}[.]){1, 3}[0-9]{1, 3})\s *->\s * ((?:[0-9]{1, 3}[.]){1, 3}[0-9]{1, 3})', ip_info)
+                print(icmp_formatted.groups())
+
+            except AttributeError:
+                print()
+
+        print(date_time)
+        print(event)
 
     f.close()
 
