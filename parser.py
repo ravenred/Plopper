@@ -22,38 +22,29 @@ def read_file(file_name):
         print(date_time)
         print(event)
 
-        if event.find("{TCP}") or event.find("{UDP}") == -1:
+        if "{ICMP}" in event:
 
-            try:
-                ip_formatted = re.search(r'\s*(((?:[0-9]{1,3}[.]){1,3}[0-9]{1,3}):([0-9]{1,6}))\s*->\s*(((?:[0-9]{1,3}[.]){1,3}[0-9]{1,3}):([0-9]{1,6}))', ip_info)
-                # print(ip_formatted.groups())
-                src_ip = ip_formatted.group(2)
-                src_port = ip_formatted.group(3)
-                dest_ip = ip_formatted.group(5)
-                dest_port = ip_formatted.group(6)
+            icmp_formatted = re.search(r'((?:[0-9]{1,3}[.]){1,3}[0-9]{1,3})\s*->\s*((?:[0-9]{1,3}[.]){1,3}[0-9]{1,3})', ip_info)
+            # print(icmp_formatted.groups())
 
-                print(src_ip)
-                print(src_port)
-                print(dest_ip)
-                print(dest_port)
+            icmp_src_ip = icmp_formatted.group(1)
+            icmp_dest_ip = icmp_formatted.group(2)
+            print(icmp_src_ip)
+            print(icmp_dest_ip)
 
-            except AttributeError:
-                pass
+        elif "{TCP}" or "{UDP}" in event:
 
-        else:
-            print("ICMP")
+            ip_formatted = re.search(r'\s*(((?:[0-9]{1,3}[.]){1,3}[0-9]{1,3}):([0-9]{1,6}))\s*->\s*(((?:[0-9]{1,3}[.]){1,3}[0-9]{1,3}):([0-9]{1,6}))',ip_info)
+            # print(ip_formatted.groups())
+            src_ip = ip_formatted.group(2)
+            src_port = ip_formatted.group(3)
+            dest_ip = ip_formatted.group(5)
+            dest_port = ip_formatted.group(6)
 
-            try:
-                icmp_formatted = re.search(r'((?:[0-9]{1, 3}[.]){1, 3}[0-9]{1, 3})\s *->\s * ((?:[0-9]{1, 3}[.]){1, 3}[0-9]{1, 3})', ip_info)
-                # print(icmp_formatted.groups())
-
-                icmp_src_ip = icmp_formatted.group(1)
-                icmp_dest_ip = icmp_formatted.group(2)
-                print(icmp_src_ip)
-                print(icmp_dest_ip)
-
-            except AttributeError:
-                pass
+            print(src_ip)
+            print(src_port)
+            print(dest_ip)
+            print(dest_port)
 
         print("************ALERT END************")
 
