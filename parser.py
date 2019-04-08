@@ -51,4 +51,4 @@ def read_file(file_name):
     f.close()
 
 
-read_file('D:/Log File Samples/tg_snort_fast/alert.fast')
+# read_file('D:/Log File Samples/tg_snort_fast/alert.fast')
