@@ -1,11 +1,16 @@
-import parser
+import snort_parser
+import visualizer
 
 
 def main():
     # print command line arguments
-
-    parser.read_file('D:/Log File Samples/tg_snort_fast/alert.fast')  # Reads log to parse
+    snort_output_list = snort_parser.read_file('D:/Log File Samples/tg_snort_fast/alerts.fast')  # Reads log to parse
+    plopper_df = visualizer.print_df(snort_output_list)
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("[-] Keyboard Interrupt")
+        print("[-] Plopper Stopping.....")

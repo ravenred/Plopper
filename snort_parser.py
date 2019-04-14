@@ -108,8 +108,9 @@ def read_file(file_name):
     n = 7
 
     # using list comprehension
-    final = [value_list[i * n:(i + 1) * n] for i in range((len(value_list) + n - 1) // n)]
-    print(final)
+    snort_list = [value_list[i * n:(i + 1) * n] for i in range((len(value_list) + n - 1) // n)]
+    # print(final)
+    return snort_list
 
 # print("data Frame")
 # visualizer.print_df(final)
