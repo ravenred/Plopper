@@ -1,5 +1,5 @@
 import re
-import json
+import visualizer
 
 # timestamp,sig_generator,sig_id,sig_rev,msg,proto,src,srcport,dst,dstport,id,classification,
 
@@ -105,6 +105,14 @@ def read_file(file_name):
 
     f.close()
 
+    n = 7
+
+    # using list comprehension
+    final = [value_list[i * n:(i + 1) * n] for i in range((len(value_list) + n - 1) // n)]
+    print(final)
+
+# print("data Frame")
+# visualizer.print_df(final)
 
 # read_file('D:/Log File Samples/tg_snort_fast/alerts.fast')
 
@@ -120,4 +128,6 @@ def read_file(file_name):
 
 # print(json.dumps(json_dict))
 
-alert_info = tuple(zip(key_list, value_list))
+# alert_info = tuple(zip(key_list, value_list))
+# print(alert_info)
+# visualizer.print_df(value_list)
