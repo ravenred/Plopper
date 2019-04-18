@@ -1,5 +1,4 @@
 import re
-import visualizer
 
 # timestamp,sig_generator,sig_id,sig_rev,msg,proto,src,srcport,dst,dstport,id,classification,
 
