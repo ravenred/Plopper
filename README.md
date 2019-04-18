@@ -3,7 +3,7 @@
 ##  SNORT Log Visualizer 
 Parses SNORT logs & visualizes them on a web page.
 
-###Dashboard Examples
+### Dashboard Examples
 ![alt text](https://github.com/ravenred/Plopper/blob/master/dash1.PNG)
 
 ![alt text](https://github.com/ravenred/Plopper/blob/master/dash2.PNG)
