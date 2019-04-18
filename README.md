@@ -29,7 +29,7 @@ To run the program
 ```
 cd plopper
 
-python main "file/location/alert.fast"
+python main.py "file/location/alert.fast"
 ``` 
 
 
