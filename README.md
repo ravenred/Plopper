@@ -17,17 +17,17 @@ Parses SNORT logs & visualizes them on a web page.
 ## Installation
 To setup the log analyser firstly Git clone using the following command.
 ```
-git clone https://github.com/ravenred/brologger.git
+git clone https://github.com/ravenred/plopper.git
 ```
 Next to install the requirements.txt file 
 ```
-pip install -r /brologger/requirements.txt
+pip install -r /plopper/requirements.txt
 ```
 
 ## Run
 To run the program
 ```
-python brologger
+python plopper "file/location/alert.fast"
 ``` 
 
 
