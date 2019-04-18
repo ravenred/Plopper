@@ -27,7 +27,9 @@ pip install -r /plopper/requirements.txt
 ## Run
 To run the program
 ```
-python plopper "file/location/alert.fast"
+cd plopper
+
+python main "file/location/alert.fast"
 ``` 
 
 
